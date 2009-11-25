@@ -1,0 +1,44 @@
+Common Lisp CFFI for the poppler library
+===========
+
+See docs in `doc/` or online [here](http://thijso.com/cl-poppler-ffi/doc/index.html).
+
+
+### UNFINISHED & UNTESTED
+
+At this point this is basically only a helper library for one of
+my personal projects I'm working on. Only the functionality I
+need at the moment is exposed.
+
+It is mostly unfinished (the only done parts are descibed in the
+documentation found in `doc/`), and most definitely **untested**. So
+use at your own risk.
+
+
+### QUICKSTART
+
+On a recent Ubuntu machine I got it working like this:
+
+- get libpoppler-qt4-dev installed through aptitude (including its deps)
+- get the usual dev tools installed (compiler, etc)
+- go to the install dir cl-poppler-ffi and do:
+
+gcc -fpic -c poppler-qt4_customwrap.cxx -I/usr/include/qt4 -I/usr/include/poppler/qt4 -I/usr/include/poppler
+c++ -shared /usr/lib/libpoppler-qt4.so /usr/lib/libQtGui.so /usr/lib/libQtCore.so poppler-qt4_customwrap.o -L/usr/lib/ -o libpoppler-qt4-ffi.so
+
+Maybe you need to adapt the paths to fit your own setup.
+
+If everything went well, you should have a libpoppler-qt4-ffi.so file
+ready for use.
+
+
+### COPYRIGHT & LICENSE
+
+Copyright 2009 M.L. Oppermann, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the MIT license, see the file `LICENSE`, and found
+[here](http://www.opensource.org/licenses/mit-license.php).
+
+
+
